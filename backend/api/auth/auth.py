@@ -40,7 +40,12 @@ def login():
     access_token = create_access_token(
         identity=str(user.id), additional_claims={"username": user.username}
     )
-    return jsonify({"access_token": access_token})
+    return jsonify(
+        {
+            "user": {"id": user.id, "username": user.username},
+            "access_token": access_token,
+        }
+    )
 
 
 @authBp.route("/sign_up", methods=["POST"])
