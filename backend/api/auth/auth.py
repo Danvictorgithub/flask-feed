@@ -18,6 +18,12 @@ def me():
     return jsonify(user.to_dict()), 200
 
 
+@authBp.route("/logout", methods=["POST"])
+@jwt_required()
+def logout():
+    return jsonify({"message": "Successfully logged out"}), 200
+
+
 @authBp.route("/login", methods=["POST"])
 def login():
     username = request.form.get("username")
