@@ -32,7 +32,9 @@ def create_app():
 
     # Register blueprints
     from .auth import authBp
+    from .posts import postBp
 
     app.register_blueprint(authBp, url_prefix="/auth")
+    app.register_blueprint(postBp, url_prefix="/posts")
 
     return app
