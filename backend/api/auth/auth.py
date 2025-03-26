@@ -12,7 +12,7 @@ from ..db import db
 def me():
     current_user = get_jwt_identity()
 
-    user = User.query.get(int(current_user))
+    user = User.query.get(current_user)
     if not user:
         return jsonify({"error": "User not found"}), 404
     return jsonify(user.to_dict()), 200
